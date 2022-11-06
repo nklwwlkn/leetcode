@@ -1,17 +1,15 @@
-function Counter(arr: Array<any>) {
-    let obj = {}
-
-    arr.forEach(val => obj[val]= (obj[val] || 0) + 1);
-
-    return obj
-}
 
 function isAnagram(s: string, t: string): boolean {
     if (s.length !== t.length) return false
     
-    const counterS = Counter(s.split(''));
-    const counterT = Counter(t.split(''));
-
+    const counterS = {};
+    const counterT = {};
+    
+    for (let i = 0; i < s.length; i++) {
+        counterS[s[i]] = (counterS[s[i]] || 0) + 1;
+        counterT[t[i]] = (counterT[t[i]] || 0) + 1;
+    }
+    
     for (let prop in counterS) {
         if (counterT[prop] !== counterS[prop]) {
             return false

@@ -6,20 +6,27 @@
 var topKFrequent = function(nums, k) {
     if (nums.length === k) return nums;
     
-    const obj = {};
+    const frequency = {}
+    const bucket = new Array(nums.length + 1).fill()
+        .map(() => []);
     const result = [];
     
-    for (num of nums) {
-        obj[num] = (obj[num] || 0) + 1
+    for (const num of nums) {
+        frequency[num] = (frequency[num] || 0) + 1;
+    }
+        
+    
+    for (const key in frequency) {
+        bucket[frequency[key]].push(Number(key))
     }
     
-    
-    const sortedEntries = Object.entries(obj).sort(([, a], [, b]) => b - a);
-    
-    for (let i = 0; i < k; i++) {
-        result.push(sortedEntries[i][0]);
+   
+    let i = bucket.length - 1; 
+    while (result.length !== k) {
+        result.push(...bucket[i])
+        i--;
     }
     
     return result
-    
+   
 };

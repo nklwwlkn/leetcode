@@ -1,22 +1,25 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        if len(nums) == k:
+        if len(nums) == 1:
             return nums
-        
-        frequency = {}
-        bucket = [[] for i in range(len(nums) + 1)]
+
         res = []
-        
+
+        bucket = [[] for i in range(len(nums) + 1)]
+        hmap = {}
+
         for num in nums:
-            frequency[num] = frequency.get(num, 0) + 1
+            hmap[num] = hmap.get(num, 1) + 1
         
-     
-        for n, c in frequency.items():
-            bucket[c].append(n)
-        
-        for i in range((len(bucket) - 1), 0, -1):
-            for n in bucket[i]:
-                res.append(n)
-            
+        for key in hmap:
+            bucket[hmap.get(key) - 1].append(key)
+
+        for i in range(len(bucket) -1, 0, -1):
             if len(res) == k:
                 return res
+            if len(bucket[i]) != 0:
+                for elem in bucket[i]:
+                    res.append(elem)
+
+        return res
+    

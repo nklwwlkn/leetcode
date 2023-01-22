@@ -1,11 +1,12 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        hmap = collections.defaultdict(list)
+        hmap = defaultdict(list)
 
         for s in strs:
-            res = [0] * 26
+            arr = [0] * 26
             for char in s:
-                res[ord(char) - ord('a')] += 1
-            hmap[tuple(res)].append(s)
+                i = ord(char) - ord('a')
+                arr[i] += 1
+            hmap[tuple(arr)].append(s)
         
         return hmap.values()

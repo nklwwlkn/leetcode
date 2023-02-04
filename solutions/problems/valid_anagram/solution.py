@@ -1,22 +1,21 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
+        sizeS = len(s)
+        sizeT = len(t)
+
+        if sizeS != sizeT:
             return False
-
-        hmap_s = {}
-        hmap_t = {}
-
-        for i in range(len(s)):
-            val_s = s[i]
-            val_t = t[i]
-            hmap_s[val_s] = hmap_s.get(val_s, 0) + 1
-            hmap_t[val_t] = hmap_t.get(val_t, 0) + 1
-
-        for key in hmap_s:
-            if key not in hmap_t or hmap_s[key] != hmap_t[key]:
-                return False
         
+        hmapS = {}
+        hmapT = {}
+
+        for i in range(sizeS):
+            hmapS[s[i]] = hmapS.get(s[i], 0) + 1
+            hmapT[t[i]] = hmapT.get(t[i], 0) + 1
+        
+        for key in hmapS:
+            if not key in hmapT or hmapT.get(key) != hmapS.get(key):
+                return False
+            
         return True
-
-
         

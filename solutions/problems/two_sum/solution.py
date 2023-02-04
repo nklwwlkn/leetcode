@@ -1,18 +1,16 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        size = len(nums)
+        numsSize = len(nums)
 
-        if size == 2:
+        if numsSize == 2:
             return [0, 1]
-
+        
         hmap = {}
 
-        for i in range(size):
-            value = nums[i]
-            hmap[value] = i
-        
-        for i in range(size):
+        for i in range(numsSize):
             find = target - nums[i]
-            
-            if find in hmap and hmap.get(find) != i:
-                return [hmap.get(find), i]
+            hmap[find] = i
+        
+        for i in range(numsSize):
+            if nums[i] in hmap and hmap.get(nums[i], -1) != i:
+                return [i, hmap.get(nums[i])]

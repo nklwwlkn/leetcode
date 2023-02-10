@@ -1,14 +1,14 @@
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        rowsLen = len(matrix)
-        colsLen = len(matrix[0])
+        rows = len(matrix)
+        cols = len(matrix[0])
 
-        l, r = 0, (rowsLen * colsLen) - 1
+        l, r = 0, (rows * cols) - 1
 
         while l <= r:
-            m = (r - l // 2) + l
-            x = m // colsLen
-            y = m % colsLen
+            m = (r - l) // 2 + l
+            x = m // cols
+            y = m % cols
 
             if target < matrix[x][y]:
                 r = m - 1
@@ -16,7 +16,7 @@ class Solution:
                 l = m + 1
             else:
                 return True
-            
+        
         return False
 
         

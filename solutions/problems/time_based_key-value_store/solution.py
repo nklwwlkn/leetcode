@@ -5,7 +5,7 @@ class TimeMap:
         
 
     def set(self, key: str, value: str, timestamp: int) -> None:
-        self.s[key].append([value, timestamp])
+        self.s[key].append([value, timestamp])        
         
 
     def get(self, key: str, timestamp: int) -> str:
@@ -15,14 +15,13 @@ class TimeMap:
         while l <= r:
             m = (r - l) // 2 + l
 
-            if  timestamp >= self.s[key][m][1]:
+            if timestamp >= self.s[key][m][1]:
                 l = m + 1
                 value = self.s[key][m][0]
             else:
                 r = m - 1
         
         return value
-        
 
 
 # Your TimeMap object will be instantiated and called as such:

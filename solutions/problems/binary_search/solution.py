@@ -4,14 +4,16 @@ class Solution:
 
         while l <= r:
             m = (r - l) // 2 + l
-            if target > nums[m]:
-                l = m + 1
+
+            if nums[m] == target:
+                return m
+            
             elif target < nums[m]:
                 r = m - 1
+
             else:
-                return m
-        
-        return -1
+                l = m + 1
         
 
+        return -1 
         

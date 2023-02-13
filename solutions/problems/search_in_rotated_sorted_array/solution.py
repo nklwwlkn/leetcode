@@ -5,9 +5,9 @@ class Solution:
         while l <= r:
             m = (r - l) // 2 + l
 
-            if nums[m] == target:
+            if target == nums[m]:
                 return m
-
+            
             elif nums[l] <= nums[m]:
                 if nums[l] <= target <= nums[m]:
                     r = m - 1
@@ -18,5 +18,7 @@ class Solution:
                     l = m + 1
                 else:
                     r = m - 1
+        
 
         return -1
+        

@@ -10,13 +10,12 @@ class Solution:
             x = m // cols
             y = m % cols
 
-            if target < matrix[x][y]:
-                r = m - 1
-            elif target > matrix[x][y]:
-                l = m + 1
-            else:
+            if target == matrix[x][y]:
                 return True
+            elif target < matrix[x][y]:
+                r = m - 1
+            else:
+                l = m + 1
         
         return False
-
         

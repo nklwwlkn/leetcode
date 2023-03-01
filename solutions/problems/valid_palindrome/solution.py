@@ -3,22 +3,18 @@ class Solution:
         l, r = 0, len(s) - 1
 
         while l < r:
-            left_value = s[l].lower()
-            right_value = s[r].lower()
-
-            if not left_value.isalnum():
+            if not s[l].isalnum():
                 l += 1
                 continue
-            if not right_value.isalnum():
+            if not s[r].isalnum():
                 r -= 1
                 continue
             
-            if left_value != right_value:
+            if s[l].lower() != s[r].lower():
                 return False
             
             l += 1
             r -= 1
-        
-        return True
 
+        return True
         

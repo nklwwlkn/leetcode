@@ -1,16 +1,16 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        numsSize = len(nums)
+        hm = {}
 
-        if numsSize == 2:
-            return [0, 1]
-        
-        hmap = {}
+        for i in range(len(nums)):
+            num = nums[i]
+            hm[num] = i
 
-        for i in range(numsSize):
+        for i in range(len(nums)):
             find = target - nums[i]
-            hmap[find] = i
+            
+            if find in hm and i != hm.get(find):
+                return [i, hm.get(find)]
+
+            
         
-        for i in range(numsSize):
-            if nums[i] in hmap and hmap.get(nums[i], -1) != i:
-                return [i, hmap.get(nums[i])]

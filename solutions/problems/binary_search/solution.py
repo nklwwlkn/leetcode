@@ -5,15 +5,13 @@ class Solution:
         while l <= r:
             m = (r - l) // 2 + l
 
-            if nums[m] == target:
+            if target == nums[m]:
                 return m
             
-            elif target < nums[m]:
-                r = m - 1
-
-            else:
+            if target > nums[m]:
                 l = m + 1
-        
-
+            else:
+                r = m - 1
+            
         return -1 
         

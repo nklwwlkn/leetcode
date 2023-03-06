@@ -9,7 +9,7 @@ class Solution:
                 while s[r] in hset:
                     hset.remove(s[l])
                     l += 1
+            longest = max(longest, (r - l + 1))
             hset.add(s[r])
-            longest = max(longest, r - l + 1)
-
+        
         return longest

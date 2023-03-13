@@ -8,15 +8,14 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-
+        
         slow, fast = head, head
-
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-
+        
         second = slow.next
-        prev, slow.next =  None, None
+        prev, slow.next = None, None
         while second:
             temp = second.next
             second.next = prev
@@ -25,12 +24,11 @@ class Solution:
         
         first, second = head, prev
         while second:
-            tempFirst = first.next
-            tempSecond = second.next
+            temp1 = first.next
+            temp2 = second.next
             first.next = second
-            second.next = tempFirst
-            first = tempFirst
-            second = tempSecond
-
+            second.next = temp1
+            first = temp1
+            second = temp2
 
         

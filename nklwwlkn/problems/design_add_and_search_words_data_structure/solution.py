@@ -4,7 +4,6 @@ class TrieNode:
         self.isEnd = False
 
 class WordDictionary:
-
     def __init__(self):
         self.root = TrieNode()
 
@@ -16,23 +15,26 @@ class WordDictionary:
                 curr.children[char] = TrieNode()
             curr = curr.children[char]
         curr.isEnd = True
-        
 
     def search(self, word: str) -> bool:
-        nodes = [self.root]
-        for i in range(len(word)):
-            next_nodes = []
-            w = word[i]
-            for node in nodes:
-                for v, child in node.children.items():
-                    if v == w or w == ".":
-                        next_nodes.append(child)
-            nodes = next_nodes
-            if i == len(word) - 1:
-                for n in nodes:
-                    if n.isEnd:
-                        return True
-        return False
+        def dfs(j, root):
+            curr = root
+            for i in range(j, len(word)):
+                char = word[i]
+                if char == ".":
+                    for child in curr.children.values():
+                        if dfs(i + 1, child):
+                            return True
+                    return False
+                else:
+                    if char not in curr.children:
+                        return False
+                    curr = curr.children[char]
+            
+            return curr.isEnd
+        return dfs(0, self.root)
+
+        
 
 
 # Your WordDictionary object will be instantiated and called as such:

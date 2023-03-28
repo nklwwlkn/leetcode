@@ -1,15 +1,14 @@
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
         def build(word):
-            bucket = []
-
+            stack = []
             for char in word:
                 if char != "#":
-                    bucket.append(char)
-                elif bucket:
-                    bucket.pop()
+                    stack.append(char)
+                elif stack:
+                    stack.pop()
             
-            return ''.join(bucket)
+            return "".join(stack)
 
         return build(s) == build(t)
         

@@ -1,16 +1,13 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        hm = {}
+        d = {}
 
-        for i in range(len(nums)):
-            num = nums[i]
-            hm[num] = i
+        for idx, num in enumerate(nums):
+            lookup = target - num
+            d[lookup] = idx
 
-        for i in range(len(nums)):
-            find = target - nums[i]
-            
-            if find in hm and i != hm.get(find):
-                return [i, hm.get(find)]
-
-            
+        for idx, num in enumerate(nums):
+            if num in d and idx != d[num]:
+                return [idx, d[num]]
+        
         

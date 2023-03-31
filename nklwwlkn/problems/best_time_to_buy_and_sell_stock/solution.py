@@ -9,4 +9,3 @@ class Solution:
             profit = max(profit, price - lowest)
         
         return profit
-        

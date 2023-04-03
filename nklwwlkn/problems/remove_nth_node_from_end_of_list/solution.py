@@ -16,8 +16,9 @@ class Solution:
         while r:
             l = l.next
             r = r.next
-        
+
         l.next = l.next.next
 
         return dummy.next
+
         

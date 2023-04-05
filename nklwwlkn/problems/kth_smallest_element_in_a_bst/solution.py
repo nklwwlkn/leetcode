@@ -10,7 +10,7 @@ class Solution:
         res = [0]
         def dfs(root):
             if not root:
-                return None
+                return 0
 
             dfs(root.left)
             counter[0] += 1
@@ -19,6 +19,10 @@ class Solution:
             dfs(root.right)
         
         dfs(root)
-
+        
         return res[0]
+
+        
+                
+            
         

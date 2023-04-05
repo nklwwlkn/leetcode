@@ -6,8 +6,8 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
+        q = deque([[root, float('-inf')]])
         counter = 0
-        q = deque([[root, float("-inf")]])
 
         while q:
             for _ in range(len(q)):
@@ -15,9 +15,12 @@ class Solution:
 
                 if node:
                     if node.val >= maxValue:
-                        counter += 1
                         maxValue = node.val
+                        counter += 1
+                    
                     q.append([node.left, maxValue])
                     q.append([node.right, maxValue])
+
         
         return counter
+        

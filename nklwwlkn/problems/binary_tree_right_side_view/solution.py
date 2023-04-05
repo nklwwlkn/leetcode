@@ -11,18 +11,20 @@ class Solution:
 
         q = deque([root])
         res = []
+
         while q:
             right = None
             for _ in range(len(q)):
                 node = q.popleft()
                 right = node
-                
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
 
+                if node:
+                    if node.left:
+                        q.append(node.left)
+                    if node.right:
+                        q.append(node.right)
+        
             if right:
                 res.append(right.val)
-        
+
         return res

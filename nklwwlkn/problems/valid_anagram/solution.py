@@ -1,13 +1,23 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t): return False
+        if len(s) != len(t):
+            return False
 
-        s_counter = Counter(s)
-        t_counter = Counter(t)
+        d1 = dict()
+        d2 = dict()
 
-        for k in s_counter:
-            if k not in t_counter or t_counter[k] != s_counter[k]:
+        for i in range(len(s)):
+            letterS = s[i]
+            letterT = t[i]
+            
+            d1[letterS] = d1.get(letterS, 0) + 1
+            d2[letterT] = d2.get(letterT, 0) + 1
+        
+        for letter in s:
+            if letter not in d2 or d1.get(letter, -1) != d2.get(letter, 1):
                 return False
 
-        return True 
+        return True
+            
+
         

@@ -17,6 +17,7 @@ class Solution:
                 list2 = list2.next
             
             curr = curr.next
+
         
         if list1:
             curr.next = list1
@@ -24,5 +25,5 @@ class Solution:
         if list2:
             curr.next = list2
 
-
+        
         return dummy.next

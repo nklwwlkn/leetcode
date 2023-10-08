@@ -2,33 +2,23 @@ class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
         ROWS = len(image)
         COLS = len(image[0])
+
         visited = set()
-
         
-        def dfs(image, visited, r, c, color, newColor):
-            if r < 0 or c < 0 or r == ROWS or c == COLS or (r, c) in visited or image[r][c] != color:
-                return 
-            
-            visited.add((r,c))
+        def dfs(image: List[List[int]], x: int, y: int, color: int, newColor: int, visited):
+            if x < 0 or y < 0 or x == ROWS or y == COLS or (x,y) in visited or image[x][y] != color:
+                return image
 
-            image[r][c] = newColor
+            visited.add((x,y))
 
-            dfs(image, visited, r + 1, c, color, newColor)
-            dfs(image, visited, r - 1, c, color, newColor)
-            dfs(image, visited, r, c + 1, color, newColor)
-            dfs(image, visited, r, c - 1, color, newColor)
+            image[x][y] = newColor
 
-            return image[r][c]
+            dfs(image, x + 1, y, color, newColor, visited)
+            dfs(image, x - 1, y, color, newColor, visited)
+            dfs(image, x, y + 1, color, newColor, visited)
+            dfs(image, x, y - 1, color, newColor, visited)
 
-        dfs(image, visited, sr, sc, image[sr][sc], color)
+        dfs(image, sr, sc, image[sr][sc], color, visited)
 
         return image
-
-
-
-        
-        
-                
-
-
         

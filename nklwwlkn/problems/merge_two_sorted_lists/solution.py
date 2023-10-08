@@ -18,12 +18,11 @@ class Solution:
             
             curr = curr.next
 
-        
         if list1:
             curr.next = list1
         
         if list2:
             curr.next = list2
 
-        
         return dummy.next
+        

@@ -1,19 +1,11 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        hmR = dict()
-        hmM = dict()
+        rCounter = Counter(ransomNote)
+        mCounter = Counter(magazine)
 
-        for char in ransomNote:
-            hmR[char] = hmR.get(char, 0) + 1
-
-        for char in magazine:
-            hmM[char] = hmM.get(char, 0) + 1
-        
-
-        for char in ransomNote:
-            if not char in hmM or hmM.get(char) < hmR.get(char):
+        for key, value in rCounter.items():
+            if not key in mCounter or mCounter.get(key) < value:
                 return False
         
-        return True
 
-        
+        return True

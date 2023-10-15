@@ -3,17 +3,18 @@ class Solution:
         l, r = 0, len(s) - 1
 
         while l <= r:
-            left = s[l].lower()
-            right = s[r].lower()
+            leftChar = s[l].lower()
+            rightChar = s[r].lower()
 
-            if not left.isalnum():
+            if not leftChar.isalnum():
                 l += 1
                 continue
-            if not right.isalnum():
+            
+            if not rightChar.isalnum():
                 r -= 1
                 continue
-
-            if left != right:
+            
+            if leftChar != rightChar:
                 return False
 
             l += 1

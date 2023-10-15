@@ -7,4 +7,3 @@ class Solution:
             if lookup in hm:
                 return [i, hm.get(lookup)]
             hm[num] = i
-        

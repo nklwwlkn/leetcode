@@ -13,5 +13,5 @@ class Solution:
         else:
             return False
         
-        return self.isSameTree(p,q)
+        return self.isSameTree(p, q)
         

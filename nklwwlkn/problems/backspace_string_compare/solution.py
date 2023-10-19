@@ -3,43 +3,38 @@ class Solution:
         sPointer = len(s) - 1
         tPointer = len(t) - 1
 
-        sSkips = 0
-        tSkips = 0
+        sSkip = 0
+        tSkip = 0
 
         while sPointer >= 0 or tPointer >= 0:
             while sPointer >= 0:
                 if s[sPointer] == "#":
-                    sSkips += 1
+                    sSkip += 1
                     sPointer -= 1
-                elif sSkips > 0:
-                    sSkips -= 1
+                elif sSkip > 0:
                     sPointer -= 1
+                    sSkip -= 1
                 else:
                     break
 
             while tPointer >= 0:
-                if t[tPointer] == "#":
-                    tSkips += 1
+                if t[tPointer] == '#':
+                    tSkip += 1
                     tPointer -= 1
-                elif tSkips > 0:
-                    tSkips -= 1
+                elif tSkip > 0:
                     tPointer -= 1
+                    tSkip -= 1
                 else:
                     break
 
             if sPointer >= 0 and tPointer >= 0 and s[sPointer] != t[tPointer]:
                 return False
-
+            
             if (sPointer >= 0) != (tPointer >= 0):
                 return False
+            
+            sPointer -= 1
+            tPointer -= 1
 
-            if sPointer >= 0:
-                sPointer -= 1
-            if tPointer >= 0:
-                tPointer -= 1
         
         return True
-
-            
-
-            

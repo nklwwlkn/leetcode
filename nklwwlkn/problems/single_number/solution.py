@@ -6,4 +6,3 @@ class Solution:
             res ^= num
 
         return res
-

@@ -10,14 +10,14 @@ class Solution:
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-        
+
         prev, curr = None, slow
         while curr:
             temp = curr.next
             curr.next = prev
             prev = curr
             curr = temp
-        
+
         while prev:
             if prev.val != head.val:
                 return False
@@ -27,5 +27,4 @@ class Solution:
         
         return True
         
-        
-
+    

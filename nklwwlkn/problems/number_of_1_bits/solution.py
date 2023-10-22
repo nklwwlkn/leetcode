@@ -3,8 +3,12 @@ class Solution:
         counter = 0
 
         while n:
-            n = n & (n - 1)
-            counter += 1
+            digit = n & 1
+
+            if digit:
+                counter += 1
+            
+            n = n >> 1
         
         return counter
         

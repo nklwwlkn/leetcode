@@ -9,21 +9,21 @@ class Solution:
         while sPointer >= 0 or tPointer >= 0:
             while sPointer >= 0:
                 if s[sPointer] == "#":
+                    sPointer -= 1
                     sSkip += 1
-                    sPointer -= 1
                 elif sSkip > 0:
-                    sPointer -= 1
                     sSkip -= 1
+                    sPointer -= 1
                 else:
                     break
-
+            
             while tPointer >= 0:
-                if t[tPointer] == '#':
+                if t[tPointer] == "#":
+                    tPointer -= 1
                     tSkip += 1
-                    tPointer -= 1
                 elif tSkip > 0:
-                    tPointer -= 1
                     tSkip -= 1
+                    tPointer -= 1
                 else:
                     break
 
@@ -33,8 +33,10 @@ class Solution:
             if (sPointer >= 0) != (tPointer >= 0):
                 return False
             
-            sPointer -= 1
             tPointer -= 1
+            sPointer -= 1
 
         
         return True
+
+        

@@ -15,3 +15,4 @@ class Solution:
                 return root1.val == root2.val and dfs(root1.left, root2.right) and dfs(root1.right, root2.left)
 
         return dfs(root.left, root.right)
+        

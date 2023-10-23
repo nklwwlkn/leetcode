@@ -3,15 +3,14 @@ class Solution:
         if len(s) != len(t):
             return False
 
-        counterS, counterT = dict(), dict()
-
+        counter = dict()
+        
         for i in range(len(s)):
-            counterS[s[i]] = counterS.get(s[i], 0) + 1
-            counterT[t[i]] = counterT.get(t[i], 0) + 1
-
-
-        for key, value in counterS.items():
-            if not key in counterT or counterT.get(key) != value:
+            counter[s[i]] = counter.get(s[i], 0) + 1
+            counter[t[i]] = counter.get(t[i], 0) - 1
+        
+        for key, value in counter.items():
+            if value != 0:
                 return False
-
+        
         return True

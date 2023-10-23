@@ -1,21 +1,24 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        if len(nums) == 1: return nums
-
-        c = Counter(nums)
-        bucket = [[] for _ in range(len(nums))]
-
-        for num in c:
-            bucket[c[num] - 1].append(num)
-
-        print(bucket)
+        counter = Counter(nums)
         
         res = []
-        for arr in reversed(bucket):
-            if arr and len(res) < k:
-                for elem in arr:
-                    if len(res) < k:
-                        res.append(elem)
-
+        bucket = [[] for _ in range(len(nums) + 1)]
+        
+        for key, value in counter.items():
+            bucket[value].append(key)
+        
+        
+        for item in reversed(bucket):
+            if item and k:
+                for val in item:
+                    if k > 0:
+                        res.append(val)
+                        k -= 1
+                    else:
+                        return res
+        
         return res
-
+           
+            
+        

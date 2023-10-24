@@ -1,6 +1,6 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        closedToOpen = { "}" : "{", ")" : "(", "]" : "[" }
+        closedToOpen = { "]" : "[", ")" : "(", "}" : "{"}
         stack = []
 
         for bracket in s:
@@ -11,7 +11,5 @@ class Solution:
                     return False
             else:
                 stack.append(bracket)
-                
-
-        return len(stack) == 0
         
+        return len(stack) == 0

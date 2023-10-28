@@ -7,12 +7,10 @@ class Solution:
 
             if nums[m] == target:
                 return m
-            
-            if target > nums[m]:
+            elif target > nums[m]:
                 l = m + 1
             else:
                 r = m - 1
-        
 
-        return -1
+        return -1 
         

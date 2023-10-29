@@ -6,16 +6,18 @@ class TimeMap:
 
     def set(self, key: str, value: str, timestamp: int) -> None:
         self.d[key].append([timestamp, value])
-        
 
     def get(self, key: str, timestamp: int) -> str:
         res = ""
-        l, r = 0, len(self.d[key]) - 1
+        if not key in self.d:
+            return res
+        
+        l, r = 0, len(self.d.get(key)) - 1
 
         while l <= r:
-            m = (r - l) // 2 + l
+            m = l + (r - l) // 2
 
-            if self.d[key][m][0] <= timestamp:
+            if timestamp >= self.d[key][m][0]:
                 res = self.d[key][m][1]
                 l = m + 1
             else:

@@ -9,15 +9,20 @@ class Solution:
         Do not return anything, modify head in-place instead.
         """
         slow, fast = head, head
+
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-
+        
         prev, curr = None, slow
         while curr:
-            curr.next, prev, curr = prev, curr, curr.next
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
 
         first, second = head, prev
         while second.next:
             first.next, first = second, first.next
             second.next, second = first, second.next
+        

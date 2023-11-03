@@ -15,15 +15,13 @@ class Solution:
         while curr:
             currToCopy[curr] = Node(curr.val)
             curr = curr.next
-        
+
         curr = head
         while curr:
             copy = currToCopy[curr]
             copy.next = currToCopy[curr.next]
             copy.random = currToCopy[curr.random]
+
             curr = curr.next
         
         return currToCopy[head]
-
-
-        

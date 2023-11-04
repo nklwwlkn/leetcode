@@ -15,12 +15,8 @@ class Solution:
         
         return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
 
-
-    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+    def isSameTree(self, p, q):
         if not p and not q:
             return True
-        if p and q and p.val == q.val:
+        elif p and q and p.val == q.val:
             return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
-        else:
-            return False
-        

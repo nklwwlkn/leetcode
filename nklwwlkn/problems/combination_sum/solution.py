@@ -1,25 +1,26 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
-        subset = []
-        def backtrack(j, currSum):
-            if currSum == 0: 
-                res.append(subset.copy()) 
+        combination = []
+
+        def backtrack(startIndex, currSum):
+            if currSum == 0:
+                res.append(combination.copy())
+                return
+            
+            if currSum <= 0 or startIndex >= len(candidates):
                 return
 
-            if currSum < 0:
-                return
+            for i in range(startIndex, len(candidates)):
+                if currSum - candidates[i] < 0: continue
 
-            for i in range(j, len(candidates)):
-                if candidates[i] > currSum: continue
+                combination.append(candidates[i])
 
-                subset.append(candidates[i])
                 backtrack(i, currSum - candidates[i])
-                subset.pop()
 
-    
+                combination.pop()
+        
         backtrack(0, target)
 
         return res
-
         

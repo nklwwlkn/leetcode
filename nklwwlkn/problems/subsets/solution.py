@@ -3,12 +3,14 @@ class Solution:
         res = []
         subset = []
 
-        def backtrack(j):
+        def backtrack(startIndex):
             res.append(subset.copy())
 
-            for i in range(j, len(nums)):
+            for i in range(startIndex, len(nums)):
                 subset.append(nums[i])
+
                 backtrack(i + 1)
+
                 subset.pop()
 
         backtrack(0)

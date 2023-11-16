@@ -2,24 +2,23 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         res = []
         permutation = []
-        taken = set()
-     
-        def backtrack():
-            if len(permutation) == len(nums): 
+
+        def backtrack(j):
+            if j >= len(nums):
                 res.append(permutation.copy())
-            else:
-                for i in range(len(nums)):
-                    if nums[i] not in taken:
+                return
+            
+            for i in range(j, len(nums)):
+                nums[i], nums[j] = nums[j], nums[i]
+                permutation.append(nums[j])
 
-                        permutation.append(nums[i])
-                        taken.add(nums[i])
+                backtrack(j + 1)
 
-                        backtrack()
+                nums[i], nums[j] = nums[j], nums[i]
+                permutation.pop()
 
-                        permutation.pop()
-                        taken.remove(nums[i])
-
-        backtrack()
+        
+        backtrack(0)
 
         return res
         

@@ -9,19 +9,19 @@ class Node:
 from typing import Optional
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
-        oldToNew = {}
+        nodeToCopy = dict()
 
         def clone(node):
-            if node in oldToNew:
-                return oldToNew[node]
+            if node in nodeToCopy:
+                return nodeToCopy[node]
             
             copy = Node(node.val)
-            oldToNew[node] = copy
+            nodeToCopy[node] = copy
 
             for n in node.neighbors:
-                copy.neighbors.append(clone(n))
-            
-            return copy
+                nodeToCopy[node].neighbors.append(clone(n))
+
+            return copy 
 
 
         return clone(node) if node else None

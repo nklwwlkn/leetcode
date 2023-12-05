@@ -1,7 +1,8 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         adjList = defaultdict(list)
-        visiting = set()
+
+        cycle = set()
         visited = set()
 
         for course, prereq in prerequisites:
@@ -11,23 +12,24 @@ class Solution:
             if course in visited:
                 return True
             
-            if course in visiting:
+            if course in cycle:
                 return False
-
-            visiting.add(course)
-
+            
+            cycle.add(course)
             for prereq in adjList[course]:
                 if not dfs(prereq):
                     return False
-            
+
             visited.add(course)
-            
+
             return True
 
         
         for course in range(numCourses):
             if not dfs(course):
                 return False
-
+        
         return True
+
+        
         

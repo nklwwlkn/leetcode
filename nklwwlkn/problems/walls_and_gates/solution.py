@@ -18,9 +18,9 @@ class Solution:
                 currentR, currentC = q.popleft()
 
                 directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-                for dr, dc in directions:
-                    r = currentR + dr
-                    c = currentC + dc
+                for dR, dC in directions:
+                    r = currentR + dR
+                    c = currentC + dC
 
                     if 0 <= r < ROWS and 0 <= c < COLS and rooms[r][c] == 2147483647:
                         rooms[r][c] = rooms[currentR][currentC] + 1

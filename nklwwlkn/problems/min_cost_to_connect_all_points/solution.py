@@ -2,11 +2,11 @@ class UnionFind:
     def __init__(self, size):
         self.root = [i for i in range(size)]
         self.rank = [1] * size
-
+    
     def find(self, n):
         if n == self.root[n]:
             return n
-
+        
         self.root[n] = self.find(self.root[n])
 
         return self.root[n]
@@ -26,39 +26,38 @@ class UnionFind:
             else:
                 self.root[root1] = root2
                 self.rank[root1] += 1
-
+            
             return True
         
         return False
 
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
+        edges = []
         size = len(points)
 
-        edges = []
         for i in range(size):
-            for j in range(i, size):
-                if i != j:
-                    a = points[i]
-                    b = points[j]
-                    distance = abs(a[0] - b[0]) + abs(a[1] - b[1])
+            for j in range(i + 1, size):
+                x1, y1 = points[i]
+                x2, y2 = points[j]
+                cost = abs(x1 - x2) + abs(y1 - y2)
 
-                    edges.append([distance, i, j])
+                edges.append((cost, i, j))
+
         
         edges.sort()
-
+        
         uf = UnionFind(size)
 
         minCost = 0
-        edgesUsed = 0
-        
-        for distance, u, v in edges:
+        numberOfConnections = 0
+        for w, u, v in edges:
             if not uf.isConnected(u, v):
                 uf.union(u, v)
-                minCost += distance
-                edgesUsed += 1
-
-                if edgesUsed == size - 1:
-                    break
+                minCost += w
+                numberOfConnections += 1
             
+            if size - 1 == numberOfConnections: break 
+
         return minCost
+

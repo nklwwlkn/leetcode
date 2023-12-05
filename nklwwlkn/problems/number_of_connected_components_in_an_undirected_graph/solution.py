@@ -5,8 +5,8 @@ class UnionFind:
 
     def find(self, n):
         if n == self.root[n]:
-            return n
-
+            return n 
+        
         self.root[n] = self.find(self.root[n])
 
         return self.root[n]
@@ -18,26 +18,26 @@ class UnionFind:
         if root1 != root2:
             if self.rank[root1] < self.rank[root2]:
                 self.root[root1] = root2
-            elif self.rank[root1] > self.rank[root2]:
+            elif self.rank[root2] < self.rank[root1]:
                 self.root[root2] = root1
             else:
                 self.root[root1] = root2
                 self.rank[root1] += 1
-
+            
             return True
-        else:
-            return False
-    
-    def isConnected(self, n1, n2):
-        return self.find(n1) == self.find(n2)
+        
+        return False
 
 class Solution:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
+
         uf = UnionFind(n)
 
-        numberOfUnions = 0
         for u, v in edges:
-            numberOfUnions += 1 if uf.union(u, v) else 0
+            if uf.union(u, v):
+                n -= 1
+        
+        return n
 
-        return n - numberOfUnions
+
         

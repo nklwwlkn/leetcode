@@ -1,8 +1,15 @@
 class Solution:
     def findSpecialInteger(self, arr: List[int]) -> int:
-        c = Counter(arr)
+        size = len(arr)
 
-        for num in arr:
-            if c.get(num) > len(arr) / 4:
-                return num
-        
+        candidates = [arr[size // 4], arr[size // 2], arr[3 * size // 4]]
+        target = size / 4
+
+        for candidate in candidates:
+            left = bisect_left(arr, candidate)
+            right = bisect_right(arr, candidate) - 1
+
+            if right - left + 1 > target:
+                return candidate
+
+        return -1         

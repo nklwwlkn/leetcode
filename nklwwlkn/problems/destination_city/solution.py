@@ -1,12 +1,10 @@
 class Solution:
     def destCity(self, paths: List[List[str]]) -> str:
-        departures = set()
-        arrivals = set()
+        adjList = defaultdict(list)
 
-        for path in paths:
-            departures.add(path[0])
-            arrivals.add(path[1])
-
-        return arrivals.difference(departures).pop()
-
+        for fr, to in paths:
+            adjList[fr].append(to)
         
+        for fr, to in paths:
+            if to not in adjList:
+                return to

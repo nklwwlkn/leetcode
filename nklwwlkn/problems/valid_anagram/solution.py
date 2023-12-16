@@ -2,15 +2,21 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
+        
+        c = Counter(s)
 
-        counter = dict()
+        for char in t:
+            if char not in c:
+                return False
+            c[char] -= 1
+
+            if c[char] < 0:
+                return False
         
-        for i in range(len(s)):
-            counter[s[i]] = counter.get(s[i], 0) + 1
-            counter[t[i]] = counter.get(t[i], 0) - 1
-        
-        for key, value in counter.items():
-            if value != 0:
+        for key, value in c.items():
+            if value > 0:
                 return False
         
         return True
+
+        

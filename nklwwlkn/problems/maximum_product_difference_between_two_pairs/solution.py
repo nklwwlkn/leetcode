@@ -1,15 +1,22 @@
 class Solution:
     def maxProductDifference(self, nums: List[int]) -> int:
-        max_first = max(nums)
-        nums.remove(max_first)
+        maxFirst = float('-inf')
+        maxSecond = float('-inf')
+        minFirst = float('inf')
+        minSecond = float('inf')
 
-        max_second = max(nums)
-        nums.remove(max_second)
+        for num in nums:
+            if num > maxFirst:
+                maxSecond = maxFirst
+                maxFirst = num
+            elif num > maxSecond:
+                maxSecond = num
+            
+            if num < minFirst:
+                minSecond = minFirst
+                minFirst = num
+            elif num < minSecond:
+                minSecond = num
 
-        min_first = min(nums)
-        nums.remove(min_first)
-        
-        min_second = min(nums)
-
-        return (max_first * max_second) - (min_first * min_second)
+        return (maxFirst * maxSecond) - (minFirst * minSecond)
 

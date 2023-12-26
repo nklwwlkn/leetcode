@@ -1,6 +1,7 @@
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
         splitted = s.split()
+        
         patternToS = dict()
         sToPattern = dict()
 

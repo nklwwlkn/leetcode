@@ -1,19 +1,20 @@
 class Solution:
-    def isNotDuplicate(self, idx, nums):
-        leftNotSame = (idx == 0) or nums[idx] != nums[idx - 1]
-        rightNotSame = (idx == len(nums) - 1) or nums[idx] != nums[idx + 1]
-
-        return leftNotSame and rightNotSame
-
     def singleNonDuplicate(self, nums: List[int]) -> int:
         if len(nums) == 1:
             return nums[0]
 
-        l, r = 0, len(nums) - 1
+        def isSingleElement(idx):
+            isLeftUnique = (idx == 0) or (nums[idx] != nums[idx - 1])
+            isRightUnique = (idx == len(nums) - 1) or (nums[idx] != nums[idx + 1])
+
+            return isLeftUnique and isRightUnique
+         
+        l = 0
+        r = len(nums) - 1
         while l <= r:
             m = (r - l) // 2 + l
 
-            if self.isNotDuplicate(m, nums):
+            if isSingleElement(m):
                 return nums[m]
             
             if m % 2 == 0:
@@ -26,7 +27,7 @@ class Solution:
                     r = m - 1
                 else:
                     l = m + 1
-                
-        return -1
         
+        return - 1
+
         

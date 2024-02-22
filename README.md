@@ -14,7 +14,7 @@ Practice lists:
 
 - [Neetcode Roadmap](https://neetcode.io/roadmap)
 - [Stivers A2Z](https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/)
-- [Problems by rating](https://zerotrac.github.io/leetcode_problem_rating/#/)
+- [Problems by contest rating](https://zerotrac.github.io/leetcode_problem_rating/#/)
 
 Good to read:
 

@@ -6,7 +6,7 @@ This repository contains my solutions to various LeetCode problems.
 
 ## Stats
 
-![](https://leetcard.jacoblin.cool/jacoblincool?border=0&radius=20)
+![](https://leetcard.jacoblin.cool/nklwwlkn?border=0&radius=20)
 
 ## Useful resources
 
